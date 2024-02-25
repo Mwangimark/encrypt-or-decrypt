@@ -6,20 +6,23 @@ shift = int(input("Type the shift number:\n"))
 
 if shift > 26:
   shift = shift % 26
+  shift = shift
 
 def encrypt(text,shift):
   encoded_text = []
 
   for i in range (0,len(text)):
-    alphabet_index = alphabet.index(text[i])
-    alphabet_index += shift
-    
-    if alphabet_index > 26 :
-      alphabet_index -= 26
-
-    
-    encodedtxt = (alphabet[alphabet_index])
-    encoded_text.append(encodedtxt)
+    if text[i] in alphabet:
+      alphabet_index = alphabet.index(text[i])
+      alphabet_index += shift
+      
+      if alphabet_index > 26 :
+        alphabet_index -= 26
+        
+      encodedtxt = (alphabet[alphabet_index])
+      encoded_text.append(encodedtxt)
+    else:
+      encoded_text.append(text[i])
   encoded_joined_text = ''.join(encoded_text)
   print(f"The coded message is : {encoded_joined_text}")
 
