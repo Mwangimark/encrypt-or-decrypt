@@ -1,6 +1,11 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+if shift > 26:
+  shift = shift % 26
 
 def encrypt(text,shift):
   encoded_text = []
@@ -11,7 +16,8 @@ def encrypt(text,shift):
     
     if alphabet_index > 26 :
       alphabet_index -= 26
-      
+
+    
     encodedtxt = (alphabet[alphabet_index])
     encoded_text.append(encodedtxt)
   encoded_joined_text = ''.join(encoded_text)
@@ -42,4 +48,5 @@ elif direction == "decode":
 else:
   print("Wrong input")
 # =================//////================
+
 
